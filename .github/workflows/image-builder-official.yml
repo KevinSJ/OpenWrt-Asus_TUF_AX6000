@@ -10,6 +10,8 @@ on:
 env:
   TZ: Pacific/Auckland
   IMAGE_BUILDER_SH: image-builder_build.sh
+  ARCH_URL: "mediatek/filogic"
+  ARCH_FILENAME: "mediatek-filogic"
 
 
 jobs:
@@ -64,14 +66,14 @@ jobs:
     - name: Download and extract image builder
       working-directory: /workdir
       run: |
-        wget -O - "https://downloads.openwrt.org/releases/$LATEST/targets/mvebu/cortexa9/openwrt-imagebuilder-$LATEST-mvebu-cortexa9.Linux-x86_64.tar.zst" | tar --zstd -xvf -
+        wget -O - "https://downloads.openwrt.org/releases/$LATEST/targets/$ARCH_URL/openwrt-imagebuilder-$LATEST-$ARCH_FILENAME.Linux-x86_64.tar.zst" | tar --zstd -xvf -
 
     - name: Build image
       id: build
       working-directory: /workdir
       run: |
         chmod +x $GITHUB_WORKSPACE/$IMAGE_BUILDER_SH
-        cd openwrt-imagebuilder-$LATEST-mvebu-cortexa9.Linux-x86_64
+        cd openwrt-imagebuilder-$LATEST-mediatek-filogic.Linux-x86_64
         $GITHUB_WORKSPACE/$IMAGE_BUILDER_SH
         echo "status=success">>$GITHUB_OUTPUT
 
@@ -79,7 +81,7 @@ jobs:
       working-directory: /workdir
       id: organize
       run: |
-        cd openwrt-imagebuilder-$LATEST-mvebu-cortexa9.Linux-x86_64/bin/targets/*/*
+        cd openwrt-imagebuilder-$LATEST-mediatek-filogic.Linux-x86_64/bin/targets/*/*
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
