@@ -4,7 +4,7 @@ on:
   repository_dispatch:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
   schedule:
     # Runs on every 15th of the month
@@ -19,7 +19,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: debian-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v6
