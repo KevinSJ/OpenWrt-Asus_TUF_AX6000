@@ -2,6 +2,9 @@ name: Build with Image Builder (Official)
 
 on:
   repository_dispatch:
+  push:
+    branches:
+      - master
   workflow_dispatch:
   schedule:
     # Runs on every 15th of the month

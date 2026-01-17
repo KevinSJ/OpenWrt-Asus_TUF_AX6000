@@ -6,7 +6,7 @@ BASE_PACKAGES="-dnsmasq -odhcpd-ipv6only base-files bash block-mount busybox ca-
 -dnsmasq-full dropbear ds-lite e2fsprogs fstools htop iwinfo \
 libc libgcc -libustream-openssl logd \
 losetup swap-utils \
-netifd odhcpd \
+netifd odhcpd stubby \
 odhcp6c openssh-sftp-server opkg ppp ppp-mod-pppoe procd \
 procd-seccomp resolveip swconfig uboot-envtools uci uclient-fetch urandom-seed \
 urngd wget-ssl -wpad-basic-mbedtls wpad-openssl zram-swap aria2 mkf2fs \
