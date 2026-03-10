@@ -30,9 +30,9 @@ llvm_tag=$(echo $version_tag|tr -d 'v')
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 echo 'src-git argontheme https://github.com/jerrykuku/luci-theme-argon.git' >> feeds.conf.default
 #echo 'src-git immortalwrt https://github.com/immortalwrt/packages' >>feeds.conf.default
-wget -O - https://downloads.openwrt.org/releases/"$llvm_tag"/targets/mediatek/filogic/llvm-bpf-18.1.7.Linux-x86_64.tar.zst | tar --zstd -xvaf -
+wget -O - https://downloads.openwrt.org/releases/"$llvm_tag"/targets/mediatek/filogic/llvm-bpf-21.1.6.Linux-x86_64.tar.zst | tar --zstd -xvaf -
 
-ln -sf "$(realpath llvm-bpf-18.1.7.Linux-x86_64)" llvm-bpf
+ln -sf "$(realpath llvm-bpf-21.1.6.Linux-x86_64)" llvm-bpf
 
 rm $GITHUB_WORKSPACE/$PATCH_DIR/0006-*.patch
 rm $GITHUB_WORKSPACE/$PATCH_DIR/0008-*.patch
