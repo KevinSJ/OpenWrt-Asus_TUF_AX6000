@@ -34,8 +34,10 @@ wget -O - https://downloads.openwrt.org/releases/"$llvm_tag"/targets/mediatek/fi
 
 ln -sf "$(realpath llvm-bpf-21.1.6.Linux-x86_64)" llvm-bpf
 
-rm $GITHUB_WORKSPACE/$PATCH_DIR/0006-*.patch
-rm $GITHUB_WORKSPACE/$PATCH_DIR/0008-*.patch
+# Skip kernel 6.18 config hardening patch (causes syncconfig failures on OpenWrt 25.12 / Linux 6.12)
+rm -f $GITHUB_WORKSPACE/$PATCH_DIR/0002-*.patch
+rm -f $GITHUB_WORKSPACE/$PATCH_DIR/0006-*.patch
+rm -f $GITHUB_WORKSPACE/$PATCH_DIR/0008-*.patch
 
 # Apply patches
 
